@@ -1,0 +1,11 @@
+/target
+
+# intellij idea project files
+pjatk-drives.iml
+/.idea
+
+# configuration files
+config.json
+
+# non essential files
+/src/web/nonessential

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
+    <!--  All snippets are MIT license http://bootdey.com/license -->
+    <title>Pjatk Drives - login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+</head>
+<body>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<br>
+<br>
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-13">
+        <div class="card-group mb-0">
+          <div class="card p-4">
+            <div class="card-body">
+              <h1>Login</h1>
+              <p class="text-muted">Sign In to your account</p>
+              <div class="input-group mb-3">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input id="user" type="text" class="form-control" placeholder="Username">
+              </div>
+              <div class="input-group mb-4">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <input id="password" type="password" class="form-control" placeholder="Password">
+              </div>
+
+            </div>
+
+              <div class="row" style="padding-bottom:44px;padding-left: 20px;padding-right: 20px;">
+                <div class="col-6">
+                  <button onclick="login()" type="button" class="btn btn-primary px-4">Login</button>
+                  <a id="failed-text"></a>
+                </div>
+                <div class="col-6 text-right">
+                  <button onclick=" window.open('https://haslo.pja.edu.pl/','_blank')" type="button" class="btn btn-link px-0">Forgot password?</button>
+                </div>
+              </div>
+
+          </div>
+          <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
+            <div class="card-body">
+              <div>
+                <h2 style="text-align: center;">About</h2>
+                <p>Pjatk Drives is an SFTP web client for the "Polish-Japanese Academy of Information Technology".</p>
+                <p>Log-in with your academic credentials to browse the "Public" and "Zet" catalogs.</p>
+                <p>By logging in you accept our policy (click "more" for the details).</p>
+                <div style="text-align:center;">
+                  <button onclick=" window.open('/','_blank')" type="button" class="btn btn-primary mt-3">[ More ]</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div id="snackbar">
+  <div class="noty_body">
+    <div><a id="snackbar-text">Hi, welcome to Unify. This is example of Toastr notification box.</a></div>
+  </div>
+</div>
+
+<style type="text/css">
+body{
+    margin-top:20px;
+    background:#eee;
+}
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 100%;
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+
+
+.card-columns .card {
+    margin-bottom: 0.75rem;
+}
+
+@media (min-width: 576px) {
+    .card-columns {
+        column-count: 3;
+        column-gap: 1.25rem;
+    }
+    .card-columns .card {
+        display: inline-block;
+        width: 100%;
+    }
+}
+.text-muted {
+    color: #9faecb !important;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+.mb-3 {
+    margin-bottom: 1rem !important;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+
+</style>
+
+<style>
+  #failed-text {
+    visibility: visible;
+  }
+
+  #snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    /*background-color: #333;*/
+    font-weight: 300;
+    /*font-size: 1.71429rem;*/
+    color: #fff;
+    /*color: #fff;*/
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+  }
+
+  #snackbar.show_error {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    background-color: #e62154;
+  }
+
+  #snackbar.show_info {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s;
+    animation: fadein 0.5s;
+    background-color: #1d75e5;
+  }
+
+  #snackbar.show_success {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    background-color: #1cc9e4;
+  }
+
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+</style>
+
+<script>
+  function show_snackbar(message, type) {
+    var x = document.getElementById("snackbar");
+    var text = document.getElementById("snackbar-text");
+    text.innerText = message;
+    x.className = type;
+
+    if (type !== "show_info") {
+      setTimeout(function(){
+        x.className = x.className.replace(type, "");
+      }, 3000);
+    }
+  }
+
+  function show_error(message) {
+    show_failed_text();
+    show_snackbar(message, "show_error");
+  }
+
+  function show_info(message) {
+    show_snackbar(message, "show_info");
+  }
+
+  function show_success(message) {
+    show_snackbar(message, "show_success");
+  }
+
+  function show_failed_text(){
+    document.getElementById("failed-text").innerText = "Login failed";
+  }
+
+  function hide_failed_text(){
+    document.getElementById("failed-text").innerText = "";
+  }
+
+  function login() {
+    hide_failed_text();
+    show_info("please wait...");
+    const host = "{{host}}";
+    const api_ver = "{{api}}";
+    const user = document.getElementById("user").value;
+    const password = document.getElementById("password").value;
+    const request = new Request(host +'/api/'+ api_ver +'/login', {method: 'POST', body: '{"user": "'+user+'", "password": "'+password+'"}'});
+
+    fetch(request)
+        .then(async response => {
+          if (response.status === 200) {
+            show_success("logged in successfully");
+            localStorage.setItem("ftp", await response.text());
+            location.replace(host+"/main");
+          } else if (response.status >= 400 && response.status < 600) {
+            show_error(await response.text());
+          } else {
+            show_error("invalid server response");
+          }
+        })
+        .then(response => {
+          console.debug(response);
+        }).catch(error => {
+      console.error(error);
+    });
+  }
+</script>
+
+<script type="text/javascript">
+
+</script>
+</body>
+</html>
